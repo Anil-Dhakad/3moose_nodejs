@@ -9,7 +9,7 @@ router.get('/', async function (req, res, next) {
   console.log('hello')
   res.send('hello')
 })
-router.get('/top', async function (req, res, next) {
+router.get('/top50', async function (req, res, next) {
 
   let to_date = moment.parseZone(moment().unix() * 1000).format("YYYY-MM-DD");
 
@@ -53,12 +53,16 @@ router.get('/top', async function (req, res, next) {
   });
 })
 
-router.get('/vanguardFunds', async function (req, res, next) {
+router.get('/vanguardfunds', async function (req, res, next) {
+  console.log('vanguardfunds')
   const url = 'https://money.usnews.com/funds/search?category=large-blend&name=Vanguard&etfs=true&mutual-funds=true';
 
   axios.get(url)
     .then(response => {
+      console.log(response.data)
       const $ = cheerio.load(response.data);
+
+      console.log(response.data)
 
       let company = []
 
