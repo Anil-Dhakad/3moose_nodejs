@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const axios = require('axios');
+var fetch = require('node-fetch');
 const cheerio = require('cheerio');
 var yahooFinance = require('yahoo-finance');
 var moment = require('moment')
@@ -62,7 +63,7 @@ router.get('/vanguardfunds', async function (req, res, next) {
       console.log(response.data)
       const $ = cheerio.load(response.data);
 
-      console.log(response.data)
+      // console.log(response.data)
 
       let company = []
 
@@ -84,8 +85,3 @@ router.get('/vanguardfunds', async function (req, res, next) {
 })
 
 module.exports = router;
-
-
-
-
-
